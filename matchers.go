@@ -26,6 +26,16 @@ func MatchingInt(t *testing.T, actual, expect int) {
 	}
 }
 
+func MatchingFloat64(t *testing.T, actual, expect, tollerance float64) {
+	t.Helper()
+	if (expect - actual) >= tollerance {
+		t.Errorf("actual does not match expected")
+		t.Logf("expected: %d", expect)
+		t.Logf("actual: %d", actual)
+		t.Logf("tollerance: %d", tollerance)
+	}
+}
+
 func NoErrorOccured(t *testing.T, err error) {
 	t.Helper()
 	if err != nil {
